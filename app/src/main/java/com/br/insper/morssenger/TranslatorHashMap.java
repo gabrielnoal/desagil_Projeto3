@@ -26,6 +26,7 @@ public class TranslatorHashMap {
     }
 
     public Character morseToChar(String morse){
+
         return morseChar.get(morse);
     }
 
