@@ -7,8 +7,10 @@ import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -27,25 +29,29 @@ public class SendActivity extends AppCompatActivity {
         finish();
     }
 
-    public int getCont(){
+    public int getCont() {
         return cont;
     }
-    public final void setCont (int contador){
+
+    public final void setCont(int contador) {
         cont = contador;
     }
 
+    private String contact;
+
     int cont = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 
-        final List<String> ajuda =  Arrays.asList("Estou com sede", "Estou com fome", "Preciso ir ao banheiro");
+        final List<String> ajuda = Arrays.asList("Estou com sede", "Estou com fome", "Preciso ir ao banheiro");
 
         final TranslatorHashMap tradutor = new TranslatorHashMap();
         final EditText editMessage = (EditText) findViewById(R.id.edit_msg);
-        final EditText editNumber = (EditText) findViewById(R.id.edit_Number);
+        //final EditText editNumber = (EditText) findViewById(R.id.edit_Number);
 
         Button button = (Button) findViewById(R.id.button_enviar);
         Button dict = (Button) findViewById(R.id.button_dict);
@@ -54,6 +60,19 @@ public class SendActivity extends AppCompatActivity {
         Button espaco = (Button) findViewById(R.id.button_espaco);
         Button help = (Button) findViewById(R.id.button_help);
 
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        final Contacts contacts = new Contacts();
+
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, android.R.id.text1);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+        for (String key : contacts.getNames()) {
+            spinnerAdapter.add(key);
+            spinnerAdapter.notifyDataSetChanged();
+        }
+
+
         final StringBuilder tmpMsg = new StringBuilder();
 
 
@@ -61,8 +80,8 @@ public class SendActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 editMessage.setText(ajuda.get(cont));
-                cont ++;
-                if (cont ==3){
+                cont++;
+                if (cont == 3) {
                     cont = 0;
                 }
             }
@@ -144,7 +163,8 @@ public class SendActivity extends AppCompatActivity {
                     return;
                 }
 
-                String number = editNumber.getText().toString();
+                //String number = editNumber.getText().toString();
+                String number = contacts.getNumber(spinner.getSelectedItem().toString());
 
                 if (!PhoneNumberUtils.isGlobalPhoneNumber(number)) {
                     Utils.showToast(SendActivity.this, "Telefone inválido!");

@@ -10,6 +10,7 @@ public class Contacts {
 
     public Contacts() {
         contacts.put("Bruno", "+5511976488314");
+        contacts.put("mochila de crianca", "a9999999999999999");
     }
 
     public HashMap<String, String> getContacts() {
@@ -31,6 +32,10 @@ public class Contacts {
             numbers.add(contacts.get(key));
         }
         return numbers;
+    }
+
+    public String getNumber(String name){
+        return contacts.get(name);
     }
 
 
