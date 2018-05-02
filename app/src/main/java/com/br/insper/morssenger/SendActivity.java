@@ -94,7 +94,7 @@ public class SendActivity extends AppCompatActivity {
                     String str = editMessage.getText().toString();
                     str = str.replace(tmpMsg.toString(), "");
                     editMessage.setText(str);
-                    Character letra = tradutor.morseToChar(tmpMsg.toString());
+                    Character letra = tradutor.morseToChar(tmpMsg.toString(), SendActivity.this);
                     editMessage.append(letra.toString());
                     tmpMsg.setLength(0);
                 } else {
