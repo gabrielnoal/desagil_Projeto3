@@ -11,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 public class SendActivity extends AppCompatActivity {
 
     private void openDictActivity() {
@@ -21,11 +26,22 @@ public class SendActivity extends AppCompatActivity {
         // Depois de abrir a SendActivity, não há porque manter a MainActivity aberta.
         finish();
     }
+
+    public int getCont(){
+        return cont;
+    }
+    public final void setCont (int contador){
+        cont = contador;
+    }
+
+    int cont = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 
+        final List<String> ajuda =  Arrays.asList("Estou com sede", "Estou com fome", "Preciso ir ao banheiro");
 
         final TranslatorHashMap tradutor = new TranslatorHashMap();
         final EditText editMessage = (EditText) findViewById(R.id.edit_msg);
@@ -36,9 +52,22 @@ public class SendActivity extends AppCompatActivity {
         Button morse = (Button) findViewById(R.id.button_morse);
         Button delete = (Button) findViewById(R.id.button_delete);
         Button espaco = (Button) findViewById(R.id.button_espaco);
+        Button help = (Button) findViewById(R.id.button_help);
 
         final StringBuilder tmpMsg = new StringBuilder();
 
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editMessage.setText(ajuda.get(cont));
+                cont ++;
+                if (cont ==3){
+                    cont = 0;
+                }
+            }
+
+        });
 
         morse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,13 +116,20 @@ public class SendActivity extends AppCompatActivity {
             }
         });
 
+        delete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                editMessage.setText("");
+                return true;
+            }
+        });
 
 
         dict.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDictActivity();
-                }
+            }
 
 
         });
