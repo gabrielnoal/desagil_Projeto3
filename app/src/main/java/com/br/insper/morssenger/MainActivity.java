@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_SEND_SMS = 0;
 
 
+
+
     private void openSendActivity() {
         // Exemplo de código para abrir uma activity. Especificamente, a SendActivity.
         Intent intent = new Intent(this, SendActivity.class);

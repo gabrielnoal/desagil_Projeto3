@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class SendActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,27 +21,26 @@ public class SendActivity extends AppCompatActivity {
         final EditText editMessage = (EditText) findViewById(R.id.edit_msg);
         final EditText editNumber = (EditText) findViewById(R.id.edit_Number);
 
-        Button button = (Button) findViewById(R.id.button_enviar);
-        Button traco = (Button) findViewById(R.id.button_traco);
-        Button ponto = (Button) findViewById(R.id.button_ponto);
+        Button send = (Button) findViewById(R.id.button_enviar);
         Button delete = (Button) findViewById(R.id.button_delete);
         Button espaco = (Button) findViewById(R.id.button_espaco);
+        Button morser = (Button) findViewById(R.id.button_morse);
 
         final StringBuilder tmpMsg = new StringBuilder();
 
 
-        traco.setOnClickListener(new View.OnClickListener() {
+        morser.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View v){
                 tmpMsg.append("-");
                 editMessage.append("-");
+                return true;
+            }
+            });
 
 
-            }});
 
-
-
-        ponto.setOnClickListener(new View.OnClickListener() {
+        morser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tmpMsg.append(".");
@@ -79,7 +79,7 @@ public class SendActivity extends AppCompatActivity {
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener(){
+        send.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 String message = editMessage.getText().toString();
