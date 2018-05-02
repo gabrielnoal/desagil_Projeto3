@@ -79,6 +79,7 @@
         android:ems="10"
         android:hint="Telefone"
         android:inputType="phone"
+        android:text="+5511976488314"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
