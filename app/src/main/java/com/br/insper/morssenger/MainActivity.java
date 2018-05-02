@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             // ...e a permissão foi de fato concedida, abrimos a SendActivity.
             if(results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) {
                 openSendActivity();
+
             }
             // Senão, permanecemos na mesma activity e mostramos uma bolha de mensagem.
             else {
