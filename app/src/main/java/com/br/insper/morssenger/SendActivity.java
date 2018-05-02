@@ -27,13 +27,7 @@ public class SendActivity extends AppCompatActivity {
         finish();
     }
 
-    public int getCont(){
-        return cont;
-    }
-    public final void setCont (int contador){
-        cont = contador;
-    }
-
+   
     int cont = 0;
 
     @Override
