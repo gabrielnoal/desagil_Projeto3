@@ -1,5 +1,6 @@
 package com.br.insper.morssenger;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
@@ -11,16 +12,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class SendActivity extends AppCompatActivity {
+
+    private void openDictActivity() {
+        // Exemplo de código para abrir uma activity. Especificamente, a SendActivity.
+        Intent intent = new Intent(this, DictActivity.class);
+        startActivity(intent);
+
+        // Depois de abrir a SendActivity, não há porque manter a MainActivity aberta.
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
+
 
         final TranslatorHashMap tradutor = new TranslatorHashMap();
         final EditText editMessage = (EditText) findViewById(R.id.edit_msg);
         final EditText editNumber = (EditText) findViewById(R.id.edit_Number);
 
         Button button = (Button) findViewById(R.id.button_enviar);
+        Button dict = (Button) findViewById(R.id.button_dict);
         Button morse = (Button) findViewById(R.id.button_morse);
         Button delete = (Button) findViewById(R.id.button_delete);
         Button espaco = (Button) findViewById(R.id.button_espaco);
@@ -73,6 +85,17 @@ public class SendActivity extends AppCompatActivity {
                 }
 
             }
+        });
+
+
+
+        dict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDictActivity();
+                }
+
+
         });
 
         button.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.br.insper.morssenger">
+    <!-- Se esquecer esta tag, o aplicativo explode ao tentar pedir permissão. -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -16,9 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SendActivity"></activity>
+        <activity android:name=".SendActivity" />
+        <activity
+            android:name=".DictActivity"
+            android:label="@string/title_activity_dict"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-    <!-- Se esquecer esta tag, o aplicativo explode ao tentar pedir permissão. -->
-    <uses-permission android:name="android.permission.SEND_SMS" />
 
 </manifest>
