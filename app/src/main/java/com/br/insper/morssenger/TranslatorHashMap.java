@@ -26,8 +26,13 @@ public class TranslatorHashMap {
     }
 
     public Character morseToChar(String morse){
-
-        return morseChar.get(morse);
+        Character resp = morseChar.get(morse);
+        if(null == resp){
+            return '?';
+        }
+        else{
+            return resp;
+        }
     }
 
     public String getCodes(String encoded){
