@@ -38,7 +38,6 @@ public class SendActivity extends AppCompatActivity {
     }
 
     private String contact;
-
     int cont = 0;
 
 
