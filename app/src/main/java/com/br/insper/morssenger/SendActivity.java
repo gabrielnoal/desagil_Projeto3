@@ -58,6 +58,12 @@ public class SendActivity extends AppCompatActivity {
         Button delete = (Button) findViewById(R.id.button_delete);
         Button espaco = (Button) findViewById(R.id.button_espaco);
         Button help = (Button) findViewById(R.id.button_help);
+        Button dictCuidador = (Button) findViewById(R.id.button_dict_cuidador);
+        Button morseCuidador = (Button) findViewById(R.id.button_morse_cuidador);
+        Button deleteCuidador = (Button) findViewById(R.id.button_delete_cuidador);
+        Button espacoCuidador = (Button) findViewById(R.id.button_espaco_cuidador);
+        Button buttonCuidador = (Button) findViewById(R.id.button_enviar_cuidador);
+
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -153,6 +159,98 @@ public class SendActivity extends AppCompatActivity {
         });
 
         button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = editMessage.getText().toString();
+
+                if (message.isEmpty()) {
+                    Utils.showToast(SendActivity.this, "Mensagem vazia!");
+                    return;
+                }
+
+                //String number = editNumber.getText().toString();
+                String number = contacts.getNumber(spinner.getSelectedItem().toString());
+
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+                    Utils.showToast(SendActivity.this, "Telefone inválido!");
+                    return;
+                }
+
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(number, null, message, null, null);
+                editMessage.setText("");
+                Utils.showToast(SendActivity.this, "Mensagen enviada!");
+            }
+
+
+        });
+
+        morseCuidador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tmpMsg.append(".");
+                editMessage.append(".");
+
+            }
+        });
+
+        morseCuidador.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                tmpMsg.append("-");
+                editMessage.append("-");
+                return true;
+            }
+        });
+
+        espacoCuidador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tmpMsg.length() > 0) {
+                    String str = editMessage.getText().toString();
+                    str = str.replace(tmpMsg.toString(), "");
+                    editMessage.setText(str);
+                    Character letra = tradutor.morseToChar(tmpMsg.toString(), SendActivity.this);
+                    editMessage.append(letra.toString());
+                    tmpMsg.setLength(0);
+                } else {
+                    editMessage.append(" ");
+                }
+
+            }
+        });
+
+        deleteCuidador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str = editMessage.getText().toString();
+                if (str.length() > 0) {
+                    str = str.substring(0, str.length() - 1);
+                    editMessage.setText(str);
+                }
+
+            }
+        });
+
+        deleteCuidador.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                editMessage.setText("");
+                return true;
+            }
+        });
+
+
+        dictCuidador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDictActivity();
+            }
+
+
+        });
+
+        buttonCuidador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String message = editMessage.getText().toString();

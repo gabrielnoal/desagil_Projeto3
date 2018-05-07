@@ -79,10 +79,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <Button
         android:id="@+id/button_espaco"
@@ -113,10 +113,10 @@
         android:text="Dicionario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.991"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -130,10 +130,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.226" />
 
     <Button
         android:id="@+id/button"
@@ -148,9 +148,68 @@
         android:text="MORE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.991"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.226" />
+
+    <Button
+        android:id="@+id/button_enviar_cuidador"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="ENVIAR"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:rotation="180" />
+
+    <Button
+        android:id="@+id/button_delete_cuidador"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="DEL"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:rotation="180" />
+
+    <Button
+        android:id="@+id/button_morse_cuidador"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/darker_gray"
+        android:text="MORSE"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:rotation="180" />
+
+    "
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_bright"
+        android:text="ESPACO"
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:rotation="180" />
+
+    <Button
+        android:id="@+id/button_dict_cuidador"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/darker_gray"
+        android:rotation="180"
+        android:text="DICIO"
+        tools:layout_editor_absoluteX="304dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/button_espaco_cuidador"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_bright"
+        android:rotation="180"
+        android:text="ESPACO"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
