@@ -31,15 +31,15 @@ public class DictActivity extends AppCompatActivity {
         final TextView dict = (TextView) findViewById(R.id.Dict);
 
 
-        final TranslatorHashMap tradutor = new TranslatorHashMap();
+        final Translator tradutor = new Translator();
         StringBuilder tabela = new StringBuilder();
 
 
 
-        for (int i = 0; i < tradutor.getABC().size(); i++) {
-            tabela.append(tradutor.getABC().get(i));
+        for (String s : tradutor.getCodes()) {
+            tabela.append(s);
             tabela.append(" = \t");
-            tabela.append(tradutor.getMorse().get(i));
+            tabela.append(tradutor.morseToChar(s));
             tabela.append("\n");
 
         }
