@@ -29,6 +29,19 @@ public class SendActivity extends AppCompatActivity {
         finish();
     }
 
+    private void openMainActivity() {
+        // Exemplo de código para abrir uma activity. Especificamente, a SendActivity.
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+        // Depois de abrir a SendActivity, não há porque manter a MainActivity aberta.
+        finish();
+    }
+
+    public void onBackPressed(){
+        openMainActivity();
+    }
+
     public int getCont() {
         return cont;
     }
@@ -86,6 +99,9 @@ public class SendActivity extends AppCompatActivity {
             }
 
         });
+
+
+
 
         morse.setOnClickListener(new View.OnClickListener() {
             @Override

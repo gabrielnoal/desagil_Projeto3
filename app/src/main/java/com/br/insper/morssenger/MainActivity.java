@@ -7,6 +7,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonSMS = (Button) findViewById(R.id.button_sms);
+        Button buttonCuidador = (Button) findViewById(R.id.button_chamar_cuidador);
+        Button buttonAgua = (Button) findViewById(R.id.button_pedir_agua);
+        Button buttonBanheiro = (Button) findViewById(R.id.button_pedir_banheiro);
 
         buttonSMS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +57,73 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
+
+        buttonCuidador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = "Preciso de voce.";
+
+                //String number = editNumber.getText().toString();
+                String number = "11987022199";
+
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+                    Utils.showToast(MainActivity.this, "Telefone inválido!");
+                    return;
+                }
+
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(number, null, message, null, null);
+                Utils.showToast(MainActivity.this, "Mensagen enviada!");
+            }
+
+
+        });
+
+        buttonAgua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = "Estou com sede.";
+
+                //String number = editNumber.getText().toString();
+                String number = "11987022199";
+
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+                    Utils.showToast(MainActivity.this, "Telefone inválido!");
+                    return;
+                }
+
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(number, null, message, null, null);
+                Utils.showToast(MainActivity.this, "Mensagen enviada!");
+            }
+
+
+        });
+
+        buttonBanheiro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = "Preciso ir ao banheiro.";
+
+                //String number = editNumber.getText().toString();
+                String number = "11987022199";
+
+                if (!PhoneNumberUtils.isGlobalPhoneNumber(number)) {
+                    Utils.showToast(MainActivity.this, "Telefone inválido!");
+                    return;
+                }
+
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(number, null, message, null, null);
+                Utils.showToast(MainActivity.this, "Mensagen enviada!");
+            }
+
+
+        });
+        };
+
+
+
 
 
     @Override
