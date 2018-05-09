@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class DictActivity extends AppCompatActivity {
 
     private void backToSend() {
@@ -21,14 +24,19 @@ public class DictActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onBackPressed(){
+        backToSend();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dict);
 
-        Button feito = (Button) findViewById(R.id.button_feito);
+//        Button feito = (Button) findViewById(R.id.button_feito);
 
         final TextView dict = (TextView) findViewById(R.id.Dict);
+        final List<Character> abc = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
 
 
         final Translator tradutor = new Translator();
@@ -36,24 +44,24 @@ public class DictActivity extends AppCompatActivity {
 
 
 
-        for (String s : tradutor.getCodes()) {
+        for (Character s : abc) {
             tabela.append(s);
             tabela.append(" = \t");
-            tabela.append(tradutor.morseToChar(s));
+            tabela.append(tradutor.charToMorse(s));
             tabela.append("\n");
 
         }
 
         dict.setText(tabela.toString());
 
-        feito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                backToSend();
-            }
-
-
-        });
+//        feito.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                backToSend();
+//            }
+//
+//
+//        });
 
 
     }

@@ -71,6 +71,11 @@ public class SendActivity extends AppCompatActivity {
         Button delete = (Button) findViewById(R.id.button_delete);
         Button espaco = (Button) findViewById(R.id.button_espaco);
         Button help = (Button) findViewById(R.id.button_help);
+        Button morse2 = (Button) findViewById(R.id.button_morse2);
+        Button delete2 = (Button) findViewById(R.id.button_delete3);
+        Button espaco2 = (Button) findViewById(R.id.button_espaco2);
+
+
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
@@ -102,6 +107,24 @@ public class SendActivity extends AppCompatActivity {
 
 
 
+
+        morse2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tmpMsg.append(".");
+                editMessage.append(".");
+
+            }
+        });
+
+        morse2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                tmpMsg.append("-");
+                editMessage.append("-");
+                return true;
+            }
+        });
 
         morse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +161,23 @@ public class SendActivity extends AppCompatActivity {
             }
         });
 
+        espaco2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tmpMsg.length() > 0) {
+                    String str = editMessage.getText().toString();
+                    str = str.replace(tmpMsg.toString(), "");
+                    editMessage.setText(str);
+                    Character letra = tradutor.morseToChar(tmpMsg.toString(), SendActivity.this);
+                    editMessage.append(letra.toString());
+                    tmpMsg.setLength(0);
+                } else {
+                    editMessage.append(" ");
+                }
+
+            }
+        });
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,6 +191,26 @@ public class SendActivity extends AppCompatActivity {
         });
 
         delete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                editMessage.setText("");
+                return true;
+            }
+        });
+
+        delete2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str = editMessage.getText().toString();
+                if (str.length() > 0) {
+                    str = str.substring(0, str.length() - 1);
+                    editMessage.setText(str);
+                }
+
+            }
+        });
+
+        delete2.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 editMessage.setText("");

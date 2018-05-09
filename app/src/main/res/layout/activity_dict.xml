@@ -8,35 +8,24 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="420dp">
-
-        <TextView
-            android:id="@+id/Dict"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="36sp" />
+        android:layout_height="520dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/button_feito"
-        android:layout_width="347dp"
-        android:layout_height="72dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="444dp"
-        android:background="@android:color/holo_green_dark"
-        android:text="Feito"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <TextView
+        android:id="@+id/Dict"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:rotation="180"
+        android:text="TextView"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="0dp" />
+
 </android.support.constraint.ConstraintLayout>
 
